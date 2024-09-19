@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ {% block head %}   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homefucked</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+{% endblock %}
+<body>
+<div class="container" style="min-height: 50%;">
+    {% block body %}
+    {% endblock %}
+</div>
+<footer>
+    <div class="encompass">
+        <h1>Arthub</h1><div class="section text">Discover a world of art at Arthub. Browse our curated collection of paintings, sculptures, prints, and more. Buy, sell, or rent artwork from
+            emerging and established artists. Join our community of art enthusiasts and connect with like-minded individuals.</div>
+    </div>
+    <div class="encompass">
+        <div class="section"></div>
+        <div class="section social">
+            <p><a href="{{shops.facebook_link}}"><i class='bx bxl-facebook-circle'></i></a></p>
+            <p><a href="{{shops.whatsapp_link}}"><i class='bx bxl-whatsapp' style="color: green;"></i></a></p>
+            <p><a href="{{shops.instagram_link}}"><i class='bx bxl-instagram'></i></a></p>
+        </div>
+    </div>
+        </footer>
+</body>
+{% block script %}
+<script>
+        const protocol = window.location.protocol;
+const hostname = window.location.hostname;
+const pathname = window.location.pathname;
+const search = window.location.search;
+const hash = window.location.hash;
+
+</script>
+{% endblock %}
+</html>

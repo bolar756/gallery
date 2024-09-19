@@ -1,0 +1,109 @@
+{% load static %}
+<head>
+ <title>Arthub</title>
+ <link rel="stylesheet" href="{% static 'css/index.css' %}">
+ <link rel="stylesheet" href="{% static 'css/search.css' %}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style type="text/css">
+.carousel{
+    background: #AAAAAA;
+    margin-top: 20px;
+    width: 100%;
+}
+.item{
+        height: 80vh;
+        padding: 80px;
+    }
+*{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+ <body>
+        <div class="deer" >
+            <div  class="header">
+                <a href="" class="head">Arthub</a>
+                    <i class='bx bx-menu-alt-right menu'></i>
+                <ul class="navbar none">
+                    <li class="hidden"><a href=""><i >x</i></a></li>
+                    {% if request.user.is_authenticated %}
+                        <li><a href="/profile" class="home"><i class='bx bxs-user-circle'></i><b>profile</b></a></li>
+                        <li><a href=""><i class='bx bx-cart-alt'></i><b>Cart</b></a></li>
+                        <li><a href="/search"><i class='bx bx-search-alt'></i><b>search</b></a></li>
+                    {% if shops %}
+                    <li><a href="/shop/{{shops.name}}"><i class='bx bx-store-alt'></i><b>Shop</b></a></li>
+                    {% else %}
+                    <li><a href="/createshop"><i class='bx bx-store-alt'></i><b>Shop</b></a></li>
+                    {% endif %}
+                    <li><a href="/logout"><i class='bx bx-log-out'></i><b>logout</b></a></li>
+                     {% else %}
+                     <li><a href="/login">login</a></li>
+                     <li><a href="/signup">signup</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="parent">
+            <div class="car" >{% include 'json.html' %}</div>
+                <div class="redee">
+                    <div class="listings">
+                        {% for lis in lists %}
+                        <div class="listing-childs">
+                             <div class="ceder">
+                                 <h2>{{lis.name}}</h2>
+                                 <h4>{{lis.description}}</h4>
+                                 <div class="bad" >
+                                    <img src="{{lis.image.url}}" alt="" >
+                                 </div>
+                                                     <b>${{lis.price}}</b>
+                             </div>
+                             <button>Buy now</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="section contact" style="display: none;">
+                <h1>contact form</h1>
+                <div class="contactform">
+                    <form action="">
+                    <input type="email" name="" id="">
+                    <button>Send</button>
+                </form>
+                </div>
+            </div>
+                <footer>
+            <div class="encompass">
+                <h1>Arthub</h1><div class="section text">Discover a world of art at Arthub. Browse our curated collection of paintings, sculptures, prints, and more. Buy, sell, or rent artwork from
+                    emerging and established artists. Join our community of art enthusiasts and connect with like-minded individuals.</div>
+            </div>
+            <div class="encompass">
+                <div class="section"></div>
+                <div class="section social">
+                    <p><a href="{{shops.facebook_link}}"><i class='bx bxl-facebook-circle'></i></a></p>
+                    <p><a href="{{shops.whatsapp_link}}"><i class='bx bxl-whatsapp' style="color: green;"></i></a></p>
+                    <p><a href="{{shops.instagram_link}}"><i class='bx bxl-instagram'></i></a></p>
+                </div>
+            </div>
+                </footer>
+        </div>
+ </body>
+<script>
+   const menu = document.querySelector('.menu')
+   const navbar = document.querySelector('.navbar')
+   const carous = document.querySelector('.car')
+   const body = document.querySelector('body')
+
+   menu.addEventListener('click',function(){
+    menu.classList.toggle('bx-menu-alt-right')
+    menu.classList.toggle('bx-x')
+    navbar.classList.toggle('none')
+    carous.classList.toggle('none')
+    body.classList.toggle('scroll')
+   })
+</script>

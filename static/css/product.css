@@ -1,0 +1,77 @@
+:root{
+    --primary: #FFF5E4;
+    --secondary: #CD5C08;
+    --tertiary1: #C1D8C3;
+    --tertiary2: #6A9C89;
+    --random: #000;
+}
+:clr{
+    --background: #032B44;
+    --text: #FFFFFF;
+    --button: #FF3737;
+}
+:footer{
+--fbackground: #032B44;
+--ftext: #FFFFFF;
+--Links: #FF3737;
+}
+form{
+    width: 60%;
+    min-height: 100vh;
+    margin-left: 20%;
+    background: #032B44;
+    box-shadow: 2px 5px 7px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+input, select, textarea,label , button{
+    width: 60%;
+    padding: 10px;
+    height: 40px;
+    border: 0;
+    margin-top: 20px;
+    resize: vertical;
+    margin-top: 30px;
+}
+button{
+    height: 60px;
+    padding: 20px;
+    background: #032B44;
+    color:  white;
+}
+button{
+    box-shadow: 2px 4px 7px black;
+}
+select{
+    width: 63%;
+    height: 60px;
+}
+label{
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+}
+textarea{
+    height: 90px;
+}
+::placeholder{
+    color: black;
+    text-transform: capitalize;
+}
+
+@media (max-width:990px) {
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 60vh;
+        margin-left: 0%;
+        border-radius: 0;
+        margin-top: 0;
+    }
+    section{
+        padding: 30px;
+    }
+  }

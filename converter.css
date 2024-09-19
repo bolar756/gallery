@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Rubik", system-ui; 
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.editor{
+    min-width: 40%;
+    height: 100vh;
+    background: wheat;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    z-index: 1;
+    top: 0px;
+}
+.mode.manual.imgmanual.hidden , .mode.imgai.ai.hidden{
+    display: none;
+}
+.mode.imgai.ai textarea{
+    width: 90%;
+    height: 40px;
+}
+.emulator{
+    width: 60%;
+    min-height: 80vh;
+    background: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editor .contain{
+    min-width: 60%;
+    min-height: 50vh;
+    box-shadow: 3px 5px 7px;
+    margin-left: 20px;
+}
+.contain.text , .contain.storage{
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: space-evenly;
+   margin-left: 0;
+    padding: 20px;
+    border-radius: 0;
+}
+.contain.storage{
+    flex-wrap: nowrap;
+}
+.contain.storage img{
+    width: 300px;
+    height: 150px;
+    cursor: pointer;
+}
+.contain.storage img:hover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.contain.text.none{
+    display: none;
+}
+.contain.img.none{
+    display: none;
+}
+.contain.text.none{
+    display: none;
+}
+.contain.img{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+     margin-left: 0;
+     padding: 20px;
+     border-radius: 0;
+}
+.contain.img img{
+     width: 250px;
+    height: 200px;
+    margin-top: 12px;
+}
+.contain.img .mode{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+}
+.contain.img label{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    color: white;
+    box-shadow: 2px 3px 5px ;
+}
+.contain.text textarea{
+  width: 94%;
+  min-height: 70px;
+  resize: vertical;
+  padding: 10px;
+  border: 0;
+  box-shadow: 2px 4px 6px;
+}
+.mode button{
+    width: 100%;
+    height: 40px;
+    padding: 10px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 0;
+    background: black;
+    box-shadow: 2px 4px 6px;
+    color: white;
+}
+.mode{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 60px;
+}
+.switch{
+    display: flex;
+    border: 2px solid black;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+.switch p{
+    cursor: pointer;
+}
+.active{
+    background: black;
+    color: white;
+    padding: 20px;
+}
+.switch p{
+    padding: 10px;
+    text-transform: capitalize;
+}
+.ai.hidden ,.manual.hidden{
+    display: none;
+}
+.card{
+    min-width: 10%;
+    height: 50vh;
+    box-shadow: 2px 4px 7px;
+    background:  white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.card .child{
+    font-size: 30px;
+    border:  1.5px solid rgb(65, 65, 194);
+    padding: 10px  18px;
+    box-shadow: 2px 4px 7px;
+    border-radius: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.post{
+    width: 60%;
+    min-height: 80vh;
+    box-shadow: 2px 4px 7px;
+    padding: 20px;
+    border-radius: 20px;
+}
+.post img{
+    width: 100%;
+}
+textarea{
+    width: 96%;
+    min-height: 18vh;
+    padding: 10px;
+}
+.post button{
+    width: 100%;
+    height: 60px;
+}
+img[src=undefined]{
+    display: none;
+}
+.contain.none{
+    display: none;
+}

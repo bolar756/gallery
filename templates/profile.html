@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile: {{user.username}}</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div class="cards">
+         <form action="{% url 'profile_update' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+             <input type="text" name="username" id="" placeholder="{{user.username}}" value="{{user.username}}">
+             <input type="text" name="email" id="" value="{{user.email}}">
+             <input type="text" name="first_name" value="{{user.first_name}}">
+             <input type="text" name="last_name" value="{{user.last_name}}">
+             <input type="datetime" name="" id="" value="{{user.date_joined}}">
+             <button type="submit">Submit</button>
+             {% if shops %}
+           <a href="{% url 'shop' shops.name  %}" class="vale">{{shops.name}}</a>
+           {% else %}
+           <button><a href="/createshop">create a shop</a></button>
+        {% endif %}
+         </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

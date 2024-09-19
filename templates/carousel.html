@@ -1,0 +1,16 @@
+<div class="hero">
+        <div class="flexed" >
+            {% for ste in  stern %}
+            <div class="carousel">
+                <div class="d-flex">
+                    <h1>{{ste.name}}</h1>
+                    <p class="descr">{{stern.description}}</p>
+                    <h2>${{ste.price}}</h2>
+                   <a href="/buy/{{ste.owner}}">{{ste.owner}} 5<i class='bx bxs-star start' ></i></a>
+                    <button>Add to cart</button>
+                </div>
+                <div class="d-flex"><img src="{{ste.image.url}}" alt=""></div>
+            </div>
+            {% endfor %}
+        </div>
+</div>

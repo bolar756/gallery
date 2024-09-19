@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="converter.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>text editor</title>
+</head>
+<body>
+    <div class="container">
+        <div class="editor">
+            <div class="card">
+                <div class="child img"><i class='bx bx-image'  ></i></div>
+                <div class="child text">
+                    <i class='bx bx-text'></i>
+                </div>
+                <div class="child link">
+                    <i class='bx bx-link-alt'></i>
+                </div>
+                <div class="child storage">
+                    <i class='bx bx-store-alt'></i>
+                </div>
+            </div>
+            <div class="contain text none">
+                <div class="switch">
+                    <p class="man active" onclick="document.querySelector('.man').classList.add('active');document.querySelector('.mac').classList.remove('active');
+                    document.querySelector('.ai').classList.add('hidden'); document.querySelector('.manual').classList.remove('hidden')">manual</p>
+                    <p class="mac" onclick="document.querySelector('.man').classList.remove('active');document.querySelector('.mac').classList.add('active')
+                     document.querySelector('.ai').classList.remove('hidden'); document.querySelector('.manual').classList.add('hidden')">ai</p>
+                </div>
+                    <div class="mode manual ">
+                        <textarea name="textaraea" id="posttext" oninput="document.querySelector('#textarea').value = 
+                        document.querySelector('#posttext').value"></textarea>
+                        <button><b>create</b> <i class='bx bxs-paper-plane'></i></button>
+                    </div>
+                    <div class=" mode ai hidden">
+                        <textarea name="textaraea" id="posttext"></textarea>
+                        <button><b>create with AI</b> <i class='bx bxs-paper-plane'></i></button>
+                    </div>
+            </div>
+            <div class="contain img none">
+                <div class="switch">
+                    <p class="imgman active" onclick="document.querySelector('.imgman').classList.add('active');document.querySelector('.imgmac').classList.remove('active');
+                    document.querySelector('.imgmanual').classList.remove('hidden');document.querySelector('.imgai').classList.add('hidden');" >manual</p>
+
+                    <p class="imgmac" onclick="document.querySelector('.imgman').classList.remove('active');document.querySelector('.imgmac').classList.add('active');
+                    document.querySelector('.imgmanual').classList.add('hidden');document.querySelector('.imgai').classList.remove('hidden');">ai</p>
+                </div>
+                <div class="mode manual imgmanual">
+                    <img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="" id="postImagePreview">           
+                    <label for="postimage">
+                        choose your post image
+                        <input type="file" name="" id="postimage" style="display: none;">
+                    </label>
+                    <button onclick="document.querySelector('#postimages').src= document.querySelector('#postImagePreview').src"><b>create</b> <i class='bx bxs-paper-plane'></i></button>
+                </div>     
+                <div class="mode imgai ai hidden">
+                    <img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="" id="postImagePreview2">           
+                    <textarea name="" id="Aimage" ></textarea>
+                    <button onclick="redex()"><b>create</b> <i class='bx bxs-paper-plane'></i></button>
+                </div>     
+            </div>
+            <div class="contain link none">
+
+            </div>
+            <div class="contain storage none">
+                         
+            </div>
+        </div>
+        <div class="emulator">
+            <div class="post">
+                <img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="" id="postimages">
+                <div class="text">
+                    <textarea name="textarea" id="textarea" disabled> your goddamn post</textarea>
+                </div>
+                <button>post</button>
+            </div>
+        </div>
+    </div>
+<script>
+function convertTextForStorage(inputText) {
+    // Replace leading spaces with tabs
+    let textWithTabs = inputText.replace(/^[ ]+/gm, (match) => {
+        let tabs = '';
+        // Each group of 4 spaces is converted to a tab
+        let spacesCount = match.length;
+        let tabCount = Math.floor(spacesCount / 4);
+        tabs = '\t'.repeat(tabCount);
+        // Add any remaining spaces after converting full groups of 4
+        let remainingSpaces = spacesCount % 4;
+        tabs += ' '.repeat(remainingSpaces);
+        return tabs;
+    });
+
+    // Replace actual line breaks with \n
+    let formattedText = textWithTabs.replace(/\r?\n/g, '\\n');
+
+    return formattedText;
+}
+function storeImageInLocalStorage(imageElement) {
+  const imageData = imageElement;
+  const randomVariableName = 'imageData_' + Math.random().toString(36).substr(2, 9);
+  localStorage.setItem(randomVariableName, imageData);
+  console.log('Image stored with variable name:', randomVariableName);
+}
+function retrieveAllImagesFromLocalStorage() {
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key.startsWith('imageData_')) {
+      const imageData = localStorage.getItem(key);
+      const imageElement = document.createElement('img');
+      if (imageElement.src = undefined){
+        imageElement.src = imageData;
+      document.querySelector('.contain.storage').appendChild(imageElement);
+      imageElement.id='null'
+      }
+      else{
+        imageElement.src = imageData;
+      document.querySelector('.contain.storage').appendChild(imageElement);
+       imageElement.id='full'
+      }
+    }
+  }
+}
+
+let originalText = `At Bjstar plumbing, we believe that art has the power to inspire, heal, and transform. 
+    We are committed to supporting emerging artists and providing them with a platform to showcase their talent. 
+    Our shop is a place where artists and collectors can come together to share their passion for art and create lasting connections.
+
+Visit us today and discover the art that ignites your soul.`;
+
+let formattedText = convertTextForStorage(originalText);
+console.log(formattedText)
+
+document.getElementById('postimage').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const imgElement = document.getElementById('postImagePreview');
+            imgElement.src = e.target.result;
+            storeImageInLocalStorage(imgElement.src)
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+const image  = document.querySelector('#postimages')
+const image2 = document.getElementById('postImagePreview2');
+async function query(data) {
+     const response = await fetch(
+         //"https://api-inference.huggingface.co/models/Melonie/text_to_image_finetuned",
+        'https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0',
+         {
+             headers: { Authorization: "Bearer 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" },
+             method: "POST",
+             body: JSON.stringify(data),
+         }
+     );
+     const result = await response.blob();
+     console.log(data)
+     return result;
+ }
+ query({"inputs": "Astronaut riding a horse"}).then((response) => {
+     const ObjectURl= URL.createObjectURL(response)
+         image.src=ObjectURl
+         const blobUrl = image.src         
+         console.log(image.src)
+ });
+
+ function redex(){query({"inputs": document.querySelector('#Aimage').value}).then((response) => {
+         const ObjectURl= URL.createObjectURL(response)
+             image2.src=ObjectURl               
+})
+ }
+const images = retrieveAllImagesFromLocalStorage()
+console.log(images)
+const icons = document.querySelectorAll('.card .child')
+const sentiel = document.querySelectorAll('.contain')
+function adder (){
+    for (let i = 0; i < sentiel.length; i++) {
+        const element = sentiel[i];
+        element.classList.add('none')
+    }
+}
+function toggler(){
+ for (let i = 0; i < icons.length; i++) {
+    const element = icons[i];
+    element.addEventListener('click',function(event){
+       const  arraynode = Array.prototype.indexOf.call(icons, event.target)
+       console.log(arraynode)
+       adder()
+       sentiel[arraynode].classList.remove('none')
+    })
+ }
+}
+toggler()
+    </script>
+</body>
+</html>

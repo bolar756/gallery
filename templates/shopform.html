@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<title>Create Shop</title>
+<link rel="stylesheet" href="{% static 'css/shopform.css'  %}">
+{% endblock %}
+{% block body%}
+<div class="cards">
+    <form action="/createshop" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <h1 class="name">create shop</h1>
+        <input type="text" name="shopname" id="" placeholder="shop Name">
+         <textarea name="shopbio" id="" placeholder=" shop bio"></textarea>
+        <label for="shoplogo"><input type="file" name="shoplogo" id="shoplogo"> enter shop logo</label>
+         <input type="url" name="flink" id="" placeholder="facebook Link">
+         <input type="url" name="wlink" id="" placeholder="whatsapp Link">
+         <input type="url" name="ilink" id="" placeholder="instagram Link">
+         <button>Create shop</button>
+    </form>
+</div>
+{% endblock %}

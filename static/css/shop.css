@@ -1,0 +1,119 @@
+:root{
+    --primary: #FFF5E4;
+    --secondary: #CD5C08;
+    --tertiary1: #C1D8C3;
+    --tertiary2: #6A9C89;
+    --random: #000;
+}
+:clr{
+    --background: #032B44;
+    --text: #FFFFFF;
+    --button: #FF3737;
+}
+:footer{
+--fbackground: #032B44;
+--ftext: #FFFFFF;
+--Links: #FF3737;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    min-height: 60vh;
+    background: #032B44;
+    margin-left: 15%;
+}
+input{
+    background: transparent;
+    border: 0;
+    font-size: 33px;
+    color: white;
+}
+textarea{
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    background: transparent;
+    color: white;
+}
+.container .logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.flex h1{
+    text-transform: capitalize;
+    color: var(--primary);
+}
+section, .flexer{
+    min-height: 10vh;
+    margin-top: 30px;
+}
+section h3{
+    text-transform: capitalize;
+    color: var(--primary);
+}
+section h1{
+    color: var(--primary);
+    text-transform: uppercase;
+}
+.flexer{
+    padding: 10px;
+}
+.product {
+    height: 10vh;
+    display: flex ;
+    background: var(--primary);
+    box-shadow: 2px 4px 6px black;
+    padding: 20px;
+    margin-top: 20px;
+    align-items: center;
+    gap: 30px;
+}
+button{
+    width: 100%;
+    border: 0;
+    text-align: center;
+    height: 10vh;
+    margin-top: 20px;
+    box-shadow: 2px 4px 6px black;
+    background: #032B44;
+    color: white;
+    cursor: pointer;
+}
+.product p{
+    width: 300px;
+    text-overflow: ellipsis;
+    height: 20px;
+    overflow: hidden;
+}
+.flexer h3{
+    margin-top: 20px;
+}
+.container .product img{
+    width: 70px;
+}
+.social{
+    display: flex;
+    gap: 40px;
+}
+.social i{
+    font-size: 30px;
+}
+@media (max-width:990px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 60vh;
+        margin-left: 0%;
+    }
+    section{
+        padding: 30px;
+    }
+  }

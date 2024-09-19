@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+<div class="search">
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form action="/search" method="post">
+        {% csrf_token %}
+        <h1>you searched for {{search}}</h1>
+        <div class="flex">
+            <input type="text" name="search">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    {% if arts %}
+        <h2>Results: Found {{ num_arts }} art items.</h2>
+        <ul class="conta">
+            {% for art in arts %}
+               <div class="product">
+                <img src="{{art.image.url}}" alt="">
+                <b>{{art.price}}</b>
+                 <b></b>
+                <button>Buy</button>
+               </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+</body>
+</html>
